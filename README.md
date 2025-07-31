@@ -71,7 +71,7 @@ You are now ready to use the Gemini CLI!
 
 🌟 **This enhanced version supports proxy API access through custom endpoints**
 
-💡 **Recommended Proxy Service**: [极速API](https://api.jisuai.top) - Reliable Gemini API proxy service sponsor
+💡 **Recommended Proxy Service**: [6API](https://api.6ai.chat) - Reliable Gemini API proxy service sponsor
 
 The Gemini API provides a free tier with [100 requests per day](https://ai.google.dev/gemini-api/docs/rate-limits#free-tier) using Gemini 2.5 Pro, control over which model you use, and access to higher rate limits (with a paid plan):
 
@@ -87,14 +87,14 @@ The Gemini API provides a free tier with [100 requests per day](https://ai.googl
    ```bash
    export GEMINI_API_KEY="YOUR_API_KEY"
    export GEMINI_API_BASE_URL="https://your-proxy-server.com"
-   # Example with 极速API: export GEMINI_API_BASE_URL="https://api.jisuai.top"
+   # Example with 6API: export GEMINI_API_BASE_URL="https://api.6ai.chat"
    # Other examples: export GEMINI_API_BASE_URL="https://api.example.com/v1"
    ```
 
    **🔀 Advanced Proxy Configuration:**
    ```bash
    export GEMINI_API_KEY="YOUR_API_KEY"
-   export GEMINI_API_BASE_URL="https://api.jisuai.top"  # Using 极速API
+   export GEMINI_API_BASE_URL="https://api.6ai.chat"  # Using 6API
    export HTTPS_PROXY="http://proxy.example.com:8080"
    export HTTP_PROXY="http://proxy.example.com:8080"
    ```
@@ -220,7 +220,7 @@ Head over to the [Uninstall](docs/Uninstall.md) guide for uninstallation instruc
 
 The core feature of this enhanced version is proxy API support, implemented through:
 
-1. **`GEMINI_API_BASE_URL` Environment Variable**: Set custom API endpoints (recommended: [极速API](https://api.jisuai.top))
+1. **`GEMINI_API_BASE_URL` Environment Variable**: Set custom API endpoints (recommended: [6API](https://api.6ai.chat))
 2. **Proxy Support**: Support for HTTP/HTTPS proxy servers
 3. **Sandbox Proxy**: Custom sandbox network proxy via `GEMINI_SANDBOX_PROXY_COMMAND`
 4. **Network Filtering**: Domain whitelist and security filtering features
@@ -307,7 +307,7 @@ For details on the terms of service and privacy notice applicable to your use of
 
 🌟 **本增强版本支持通过自定义端点进行中转API访问**
 
-💡 **推荐中转服务商**: [极速API](https://api.jisuai.top) - 可靠的Gemini API中转服务赞助商
+💡 **推荐中转服务商**: [6API](https://api.6ai.chat) - 可靠的Gemini API中转服务赞助商
 
 Gemini API 提供免费套餐，使用 Gemini 2.5 Pro 可享受[每天 100 个请求](https://ai.google.dev/gemini-api/docs/rate-limits#free-tier)，控制使用的模型，并可访问更高的速率限制（通过付费计划）：
 
@@ -323,14 +323,14 @@ Gemini API 提供免费套餐，使用 Gemini 2.5 Pro 可享受[每天 100 个�
    ```bash
    export GEMINI_API_KEY="YOUR_API_KEY"
    export GEMINI_API_BASE_URL="https://your-proxy-server.com"
-   # 推荐使用极速API：export GEMINI_API_BASE_URL="https://api.jisuai.top"
+   # 推荐使用6API：export GEMINI_API_BASE_URL="https://api.6ai.chat"
    # 其他示例：export GEMINI_API_BASE_URL="https://api.example.com/v1"
    ```
 
    **🔀 高级代理配置：**
    ```bash
    export GEMINI_API_KEY="YOUR_API_KEY"
-   export GEMINI_API_BASE_URL="https://api.jisuai.top"  # 使用极速API
+   export GEMINI_API_BASE_URL="https://api.6ai.chat"  # 使用6API
    export HTTPS_PROXY="http://proxy.example.com:8080"
    export HTTP_PROXY="http://proxy.example.com:8080"
    ```
@@ -455,7 +455,7 @@ gemini
 
 本增强版本的核心特性是支持中转API，通过以下方式实现：
 
-1. **`GEMINI_API_BASE_URL` 环境变量**：设置自定义API端点（推荐：[极速API](https://api.jisuai.top)）
+1. **`GEMINI_API_BASE_URL` 环境变量**：设置自定义API端点（推荐：[6API](https://api.6ai.chat)）
 2. **代理支持**：支持HTTP/HTTPS代理服务器
 3. **沙盒代理**：通过 `GEMINI_SANDBOX_PROXY_COMMAND` 自定义沙盒网络代理
 4. **网络过滤**：提供域名白名单和安全过滤功能
