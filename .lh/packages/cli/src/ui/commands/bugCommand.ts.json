@@ -1,0 +1,18 @@
+{
+    "sourceFile": "packages/cli/src/ui/commands/bugCommand.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753935764086,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753935764086,
+            "name": "Commit-0",
+            "content": "/**\n * @license\n * Copyright 2025 Google LLC\n * SPDX-License-Identifier: Apache-2.0\n */\n\nimport open from 'open';\nimport process from 'node:process';\nimport {\n  type CommandContext,\n  type SlashCommand,\n  CommandKind,\n} from './types.js';\nimport { MessageType } from '../types.js';\nimport { GIT_COMMIT_INFO } from '../../generated/git-commit.js';\nimport { formatMemoryUsage } from '../utils/formatters.js';\nimport { getCliVersion } from '../../utils/version.js';\n\nexport const bugCommand: SlashCommand = {\n  name: 'bug',\n  description: 'submit a bug report',\n  kind: CommandKind.BUILT_IN,\n  action: async (context: CommandContext, args?: string): Promise<void> => {\n    const bugDescription = (args || '').trim();\n    const { config } = context.services;\n\n    const osVersion = `${process.platform} ${process.version}`;\n    let sandboxEnv = 'no sandbox';\n    if (process.env.SANDBOX && process.env.SANDBOX !== 'sandbox-exec') {\n      sandboxEnv = process.env.SANDBOX.replace(/^gemini-(?:code-)?/, '');\n    } else if (process.env.SANDBOX === 'sandbox-exec') {\n      sandboxEnv = `sandbox-exec (${\n        process.env.SEATBELT_PROFILE || 'unknown'\n      })`;\n    }\n    const modelVersion = config?.getModel() || 'Unknown';\n    const cliVersion = await getCliVersion();\n    const memoryUsage = formatMemoryUsage(process.memoryUsage().rss);\n\n    const info = `\n* **CLI Version:** ${cliVersion}\n* **Git Commit:** ${GIT_COMMIT_INFO}\n* **Operating System:** ${osVersion}\n* **Sandbox Environment:** ${sandboxEnv}\n* **Model Version:** ${modelVersion}\n* **Memory Usage:** ${memoryUsage}\n`;\n\n    let bugReportUrl =\n      'https://github.com/aigo666/gemini-cli-new/issues/new?template=bug_report.yml&title={title}&info={info}';\n\n    const bugCommandSettings = config?.getBugCommand();\n    if (bugCommandSettings?.urlTemplate) {\n      bugReportUrl = bugCommandSettings.urlTemplate;\n    }\n\n    bugReportUrl = bugReportUrl\n      .replace('{title}', encodeURIComponent(bugDescription))\n      .replace('{info}', encodeURIComponent(info));\n\n    context.ui.addItem(\n      {\n        type: MessageType.INFO,\n        text: `To submit your bug report, please open the following URL in your browser:\\n${bugReportUrl}`,\n      },\n      Date.now(),\n    );\n\n    try {\n      await open(bugReportUrl);\n    } catch (error) {\n      const errorMessage =\n        error instanceof Error ? error.message : String(error);\n      context.ui.addItem(\n        {\n          type: MessageType.ERROR,\n          text: `Could not open URL in browser: ${errorMessage}`,\n        },\n        Date.now(),\n      );\n    }\n  },\n};\n"
+        }
+    ]
+}

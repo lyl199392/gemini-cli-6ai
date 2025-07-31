@@ -1,0 +1,18 @@
+{
+    "sourceFile": ".github/ISSUE_TEMPLATE/bug_report.yml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753935793936,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753935793936,
+            "name": "Commit-0",
+            "content": "name: Bug Report\ndescription: Report a bug to help us improve Gemini CLI\nlabels: ['kind/bug', 'status/need-triage']\nbody:\n  - type: markdown\n    attributes:\n      value: |\n        > [!IMPORTANT]  \n        > Thanks for taking the time to fill out this bug report!\n        >\n        > Please search **[existing issues](https://github.com/aigo666/gemini-cli-new/issues)** to see if an issue already exists for the bug you encountered.\n\n  - type: textarea\n    id: problem\n    attributes:\n      label: What happened?\n      description: A clear and concise description of what the bug is.\n    validations:\n      required: true\n\n  - type: textarea\n    id: expected\n    attributes:\n      label: What did you expect to happen?\n    validations:\n      required: true\n\n  - type: textarea\n    id: info\n    attributes:\n      label: Client information\n      description: Please paste the full text from the `/about` command run from Gemini CLI. Also include which platform (macOS, Windows, Linux).\n      value: |\n        <details>\n\n        ```console\n        $ gemini /about\n        # paste output here\n        ```\n\n        </details>\n    validations:\n      required: true\n\n  - type: textarea\n    id: login-info\n    attributes:\n      label: Login information\n      description: Describe how you are logging in (e.g., Google Account, API key).\n\n  - type: textarea\n    id: additional-context\n    attributes:\n      label: Anything else we need to know?\n      description: Add any other context about the problem here.\n"
+        }
+    ]
+}

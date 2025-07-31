@@ -1,0 +1,18 @@
+{
+    "sourceFile": ".github/ISSUE_TEMPLATE/feature_request.yml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753935805640,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753935805640,
+            "name": "Commit-0",
+            "content": "name: Feature Request\ndescription: Suggest an idea for this project\nlabels: ['kind/enhancement', 'status/need-triage']\nbody:\n  - type: markdown\n    attributes:\n      value: |\n        > [!IMPORTANT]  \n        > Thanks for taking the time to suggest an enhancement!\n        >\n        > Please search **[existing issues](https://github.com/aigo666/gemini-cli-new/issues)** to see if a similar feature has already been requested.\n\n  - type: textarea\n    id: feature\n    attributes:\n      label: What would you like to be added?\n      description: A clear and concise description of the enhancement.\n    validations:\n      required: true\n\n  - type: textarea\n    id: rationale\n    attributes:\n      label: Why is this needed?\n      description: A clear and concise description of why this enhancement is needed.\n    validations:\n      required: true\n\n  - type: textarea\n    id: additional-context\n    attributes:\n      label: Additional context\n      description: Add any other context or screenshots about the feature request here.\n"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "packages/cli/src/ui/commands/bugCommand.test.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753935843683,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753935843683,
+            "name": "Commit-0",
+            "content": "/**\n * @license\n * Copyright 2025 Google LLC\n * SPDX-License-Identifier: Apache-2.0\n */\n\nimport { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';\nimport open from 'open';\nimport { bugCommand } from './bugCommand.js';\nimport { createMockCommandContext } from '../../test-utils/mockCommandContext.js';\nimport { getCliVersion } from '../../utils/version.js';\nimport { GIT_COMMIT_INFO } from '../../generated/git-commit.js';\nimport { formatMemoryUsage } from '../utils/formatters.js';\n\n// Mock dependencies\nvi.mock('open');\nvi.mock('../../utils/version.js');\nvi.mock('../utils/formatters.js');\nvi.mock('node:process', () => ({\n  default: {\n    platform: 'test-platform',\n    version: 'v20.0.0',\n    // Keep other necessary process properties if needed by other parts of the code\n    env: process.env,\n    memoryUsage: () => ({ rss: 0 }),\n  },\n}));\n\ndescribe('bugCommand', () => {\n  beforeEach(() => {\n    vi.mocked(getCliVersion).mockResolvedValue('0.1.0');\n    vi.mocked(formatMemoryUsage).mockReturnValue('100 MB');\n    vi.stubEnv('SANDBOX', 'gemini-test');\n  });\n\n  afterEach(() => {\n    vi.unstubAllEnvs();\n    vi.clearAllMocks();\n  });\n\n  it('should generate the default GitHub issue URL', async () => {\n    const mockContext = createMockCommandContext({\n      services: {\n        config: {\n          getModel: () => 'gemini-pro',\n          getBugCommand: () => undefined,\n        },\n      },\n    });\n\n    if (!bugCommand.action) throw new Error('Action is not defined');\n    await bugCommand.action(mockContext, 'A test bug');\n\n    const expectedInfo = `\n* **CLI Version:** 0.1.0\n* **Git Commit:** ${GIT_COMMIT_INFO}\n* **Operating System:** test-platform v20.0.0\n* **Sandbox Environment:** test\n* **Model Version:** gemini-pro\n* **Memory Usage:** 100 MB\n`;\n    const expectedUrl =\n      'https://github.com/aigo666/gemini-cli-new/issues/new?template=bug_report.yml&title=A%20test%20bug&info=' +\n      encodeURIComponent(expectedInfo);\n\n    expect(open).toHaveBeenCalledWith(expectedUrl);\n  });\n\n  it('should use a custom URL template from config if provided', async () => {\n    const customTemplate =\n      'https://internal.bug-tracker.com/new?desc={title}&details={info}';\n    const mockContext = createMockCommandContext({\n      services: {\n        config: {\n          getModel: () => 'gemini-pro',\n          getBugCommand: () => ({ urlTemplate: customTemplate }),\n        },\n      },\n    });\n\n    if (!bugCommand.action) throw new Error('Action is not defined');\n    await bugCommand.action(mockContext, 'A custom bug');\n\n    const expectedInfo = `\n* **CLI Version:** 0.1.0\n* **Git Commit:** ${GIT_COMMIT_INFO}\n* **Operating System:** test-platform v20.0.0\n* **Sandbox Environment:** test\n* **Model Version:** gemini-pro\n* **Memory Usage:** 100 MB\n`;\n    const expectedUrl = customTemplate\n      .replace('{title}', encodeURIComponent('A custom bug'))\n      .replace('{info}', encodeURIComponent(expectedInfo));\n\n    expect(open).toHaveBeenCalledWith(expectedUrl);\n  });\n});\n"
+        }
+    ]
+}

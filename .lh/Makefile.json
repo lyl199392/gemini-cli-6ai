@@ -1,0 +1,18 @@
+{
+    "sourceFile": "Makefile",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753935821776,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753935821776,
+            "name": "Commit-0",
+            "content": "# Makefile for gemini-cli\n\n.PHONY: help install build build-sandbox build-all test lint format preflight clean start debug release run-npx create-alias\n\nhelp:\n\t@echo \"Makefile for gemini-cli\"\n\t@echo \"\"\n\t@echo \"Usage:\"\n\t@echo \"  make install          - Install npm dependencies\"\n\t@echo \"  make build            - Build the main project\"\n\t@echo \"  make build-all        - Build the main project and sandbox\"\n\t@echo \"  make test             - Run the test suite\"\n\t@echo \"  make lint             - Lint the code\"\n\t@echo \"  make format           - Format the code\"\n\t@echo \"  make preflight        - Run formatting, linting, and tests\"\n\t@echo \"  make clean            - Remove generated files\"\n\t@echo \"  make start            - Start the Gemini CLI\"\n\t@echo \"  make debug            - Start the Gemini CLI in debug mode\"\n\t@echo \"\"\n\t@echo \"  make run-npx          - Run the CLI using npx (for testing the published package)\"\n\t@echo \"  make create-alias     - Create a 'gemini' alias for your shell\"\n\ninstall:\n\tnpm install\n\nbuild:\n\tnpm run build\n\n\nbuild-all:\n\tnpm run build:all\n\ntest:\n\tnpm run test\n\nlint:\n\tnpm run lint\n\nformat:\n\tnpm run format\n\npreflight:\n\tnpm run preflight\n\nclean:\n\tnpm run clean\n\nstart:\n\tnpm run start\n\ndebug:\n\tnpm run debug\n\n\nrun-npx:\n\tnpx https://github.com/aigo666/gemini-cli-new\n\ncreate-alias:\n\tscripts/create_alias.sh\n"
+        }
+    ]
+}
